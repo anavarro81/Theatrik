@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
-
+// Define el URI para conectar con tu base de datos
 const DB_URL= process.env.BD_URI
 
 const connect = async()=> {
