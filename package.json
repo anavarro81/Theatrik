@@ -8,7 +8,8 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "server-dev": "node server.js",
-    "seeds": "node seeds.js"
+    "seeds": "node seeds.js",
+    "companiesseeds": "node company.seeds.js"
   },
   "keywords": [],
   "author": "",
