@@ -2,7 +2,7 @@ const play = require('../models/play.models')
 
 async function getAllPlays(req, res) {
     try {
-        const plays = await Play.find()
+        const plays = await play.find()
         console.log(plays);
         if(plays) {
             return res.status(200).json(plays);
