@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const PlaySchema = new Schema (
+const PlaySchema = new Schema(
     {
         cartel: String,
         asociacion: String,
@@ -14,11 +14,11 @@ const PlaySchema = new Schema (
         interpretes: String,
         dirección: String,
         escenografía: String,
-        vestuario: String        
+        vestuario: String
     },
     { collection: 'plays' }
-        
-);    
+
+);
 
 const Play = mongoose.model('plays', PlaySchema)
 module.exports = Play;
