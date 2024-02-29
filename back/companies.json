@@ -1,0 +1,23 @@
+[
+    {
+     "logo": "logo_Driades.jpg", 
+     "name": "Driades",
+     "email": "driades@gmail.com",
+     "phone": "654789654",
+     "web": "wwww.driades.com"
+    },
+    {
+        "logo": "logo_Druida.jpg", 
+        "name": "Druida",
+        "email": "druida@gmail.com",
+        "phone": "654789654",
+        "web": "wwww.druida.com"
+       },
+    {
+        "logo": "logo_Teatro_Invisible.jpg", 
+        "name": "Teatro Invisible",
+        "email": "teatroinvisible@gmail.com",
+        "phone": "654789654",
+        "web": "wwww.teatroinvisible.com"
+       }
+]
