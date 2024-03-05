@@ -1,8 +1,8 @@
-const play = require('../models/play.models')
+const Play = require('../models/play.models')
 
 async function getAllPlays(req, res) {
     try {
-        const plays = await play.find()
+        const plays = await Play.find()
         console.log(plays);
         if(plays) {
             return res.status(200).json(plays);
