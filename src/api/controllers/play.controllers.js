@@ -1,6 +1,6 @@
 const Play = require('../models/play.models')
 
-async function getAllPlays(req, res) {
+const getAllPlays = async (req, res) =>{
     try {
         const plays = await Play.find()
         console.log(plays);
@@ -12,7 +12,40 @@ async function getAllPlays(req, res) {
     } catch (error) {
         res.status(500).send(error.message)
     }
-}
+};
+
+// Obtener obra por ID
+const getPlaybyID = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const selectedPlay = await Play.findById(id)
+      if (!selectedPlay) {
+        return res.status(404).json({message: `No encontrada la obra con id: ${id}` })
+      }
+      return res.status(200).json(selectedPlay)
+    } catch (error) {
+          return res.status(500).json(error);
+    }
+  };
+
+// Eliminar obra por ID
+const deletePlay = async (req, res) => {
+  try {
+
+    const {id} = req.params
+    const deletedPlay = await Play.findByIdAndDelete(id)
+
+    if (!deletedPlay) {
+      return res.status(404).json({message: 'No encontrada la obra'})
+    } else {
+      return res.status(200).json(deletedPlay)
+    }
+
+  } catch (error) {
+    console.log('error al borrar la obra: ', error);
+    return res.status(500).json(error)
+  }
+};
 
 //Actualizar la información de una obra ya existente en la colección, identificada por su ID
 const putPlay = async (req, res) => {
@@ -48,4 +81,4 @@ const putPlay = async (req, res) => {
     }
 };
 
-module.exports = { getAllPlays, putPlay, postPlay };
+module.exports = { getAllPlays, getPlaybyID, putPlay, postPlay, deletePlay };
