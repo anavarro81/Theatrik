@@ -1,6 +1,5 @@
 const express = require("express")
-const {getAllPlays} = require('../controllers/play.controllers' );
-const { putPlay, postPlay } = require("../controllers/play.sara.controllers");
+const {getAllPlays, putPlay, postPlay } = require('../controllers/play.controllers' );
 
 const playRoutes = express.Router();
 

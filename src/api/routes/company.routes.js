@@ -1,5 +1,5 @@
 const express = require('express');
-const { newCompany, updateCompany, deleteCompany  } = require('../controllers/company.yeray.controllers');
+const { newCompany, updateCompany, deleteCompany  } = require('../controllers/company.controllers');
 
 
 
