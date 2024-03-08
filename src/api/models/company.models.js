@@ -8,6 +8,7 @@ const CompanySchema = new Schema(
         email: String,
         phone: String,
         web: String,
+        plays: [{ type: Schema.Types.ObjectId, ref: 'plays' }]
     },
     { collection: 'companies' }
 

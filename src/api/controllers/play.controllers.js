@@ -1,6 +1,6 @@
 const Play = require('../models/play.models')
 
-async function getAllPlays(req, res) {
+const getAllPlays = async (req, res) =>  {
     try {
         const plays = await Play.find()
         console.log(plays);
@@ -12,7 +12,7 @@ async function getAllPlays(req, res) {
     } catch (error) {
         res.status(500).send(error.message)
     }
-}
+};
 
 //Actualizar la información de una obra ya existente en la colección, identificada por su ID
 const putPlay = async (req, res) => {
