@@ -1,7 +1,7 @@
 const express = require("express"); 
 const app = express();
 const playRoutes = require ('./src/api/routes/play.routes.js')
-const companyRoutes = require('./src/api/routes/company.yeray.router.js')
+const companyRoutes = require('./src/api/routes/company.yeray.routes.js')
 const cors = require("cors");
 
 const { connect } = require ('./bd')
