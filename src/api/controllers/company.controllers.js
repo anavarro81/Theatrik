@@ -4,7 +4,7 @@ const Company = require('../models/company.models')
 // CREATE
 const newCompany = async (req, res) => {
     try {
-        const newCompany = new company(req.body);
+        const newCompany = new Company(req.body);
         const createdCompany = await newCompany.save();
         return res.status(201).json(createdCompany);
     } catch (error) {
