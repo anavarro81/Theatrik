@@ -7,7 +7,8 @@ const CompanySchema = new Schema(
         name: String,
         email: String,
         phone: String,
-        web: String,
+        web: String,        
+        plays: [{ type: Schema.Types.ObjectId, ref: 'plays' }]
     },
     { collection: 'companies' }
 

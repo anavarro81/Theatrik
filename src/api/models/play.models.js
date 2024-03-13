@@ -4,17 +4,17 @@ const Schema = mongoose.Schema;
 const PlaySchema = new Schema(
     {
         cartel: String,
-        asociacion: String,
-        titulo: String,
-        genero: String,
-        fecha: Date,
-        hora: String,
-        teatro: String,
-        sinopsis: String,
-        interpretes: String,
-        dirección: String,
-        escenografía: String,
-        vestuario: String
+        company: String,
+        title: String,
+        genre: String,
+        date: Date,
+        time: String,
+        place: String,
+        synopsis: String,
+        actors: String,
+        director: String,
+        setDesing: String,
+        costume: String
     },
     { collection: 'plays' }
 

@@ -2,8 +2,10 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
 
-const Play = require("./src/api/models/models/play.models")
+const Play = require("./src/api/models/play.models")
 const Plays = require("./plays.json")
+const Company = require ("../back/src/api/models/company.models")
+const Companies = require("./companies.json")
 
 const DB_URL = process.env.BD_URI;
 
@@ -17,13 +19,21 @@ mongoose.connect(DB_URL)
         const allPlays = await Play.find();
 
         // Verificamos si se encontraron obras en la consulta anterior
-        if (allPlays.length > 0) {
-            // Si se encontraron obras, las eliminamos de la colección utilizando el método "drop()"
+        if (allPlays.length > 0) {            
             await Play.collection.drop();
 
             // Imprimimos un mensaje en la consola indicando que las obras han sido borradas con éxito
             console.log("Se han borrado las obras");
         }
+
+
+        const allCompanies = await Company.find();
+
+        if (allCompanies.length > 0) {            
+            await Company.collection.drop();            
+            console.log("Se han borrado todas las compañias");
+        }
+
     })
     // Utilizamos ".catch()" para manejar cualquier error que ocurra durante el proceso de la promesa anterior
     .catch((error) => console.log("Error al borrar las obras", error))
@@ -34,6 +44,29 @@ mongoose.connect(DB_URL)
         // Mapeamos las obras existentes para crear nuevos objetos Play con cada una
         const playsMap = Plays.map((play) => new Play(play));
 
+        
+
+        for (const play of playsMap) {
+            
+            const companyFoundes = Companies.find(company => company.name === play.company);
+
+
+            if (companyFoundes) {
+                companyFoundes.plays = []
+                companyFoundes.plays.push(play._id)
+            } else  {
+                console.log('No se ha encontrado la compañia: ', play.company);
+            }
+        }
+
+
+        const compeniesMap = Companies.map((companie) => new Company(companie));
+
+
+        const result = await Company.insertMany(compeniesMap);
+
+        
+      
         // Insertamos las obras mapeadas en la base de datos
         await Play.insertMany(playsMap);
 
