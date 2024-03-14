@@ -57,5 +57,33 @@ const deleteCompany = async (req, res) => {
     }
 };
 
-module.exports = { newCompany, updateCompany, deleteCompany }
+
+// // Definir la ruta para enviar el correo de confirmación de reserva
+// const confirmationEmail = async (req, res) => {
+//     try {
+//         const { companyId, email } = req.body;
+
+//         // Buscar la compañía por su ID
+//         const company = await Company.findById(companyId);
+//         if (!company) {
+//             return res.status(404).json({ message: "Compañía no encontrada" });
+//         }
+
+//         // Enviar correo de confirmación
+//         await transporter.sendMail({
+//             from: '"Mensaje de confirmación 👻" <ensayomailer@gmail.com>',
+//             to: email,
+//             subject: "Confirmación de reserva de entrada",
+//             text: `¡Gracias por reservar con ${company.email}! Su reserva ha sido confirmada.`,
+//             html: `<b>¡Gracias por reservar con ${company.email}!</b> Su reserva ha sido confirmada.`,
+//         });
+
+//         res.status(200).json({ message: 'Correo de confirmación enviado correctamente' });
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).json({ message: 'Error al enviar el correo de confirmación' });
+//     }
+// };
+
+module.exports = { newCompany, updateCompany, deleteCompany,  }
 
