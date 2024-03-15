@@ -71,7 +71,11 @@ const putPlay = async (req, res) => {
 //Añadir una nueva obra a la colección
 const postPlay = async (req, res) => {
     try {
-        const newPlay = new Play(req.body);
+       const newPlay = new Play(req.body);
+
+       if (req.file.path) {
+        newPlay.cartel = req.file.path;
+      }
 
         const createdPlay = await newPlay.save()
         return res.status(201).json(createdPlay)
