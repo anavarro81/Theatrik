@@ -1,5 +1,6 @@
 // importamos el modelo al que queremos acceder
 const Company = require('../models/company.models')
+const { sendEmail } = require('../utils/mailer.config')
 
 // CREATE
 const newCompany = async (req, res) => {
@@ -57,6 +58,8 @@ const deleteCompany = async (req, res) => {
     }
 };
 
+
+//populate
 const getAllCompanies = async (req, res) => {
     try {
         const company = await Company.find().populate("plays")
@@ -71,11 +74,13 @@ const getAllCompanies = async (req, res) => {
     }
 };
 
-
+//populate
 const getCompnanyByID = async (req, res) => {
     try {
         const { id } = req.params;
         const selectedCompany = await Company.findById(id).populate("plays")
+        console.log("etamo dentroo")
+        sendEmail(); // llamaria a la funcion del email
         if (!selectedCompany) {
             return res.status(404).json({ message: `No encontrada la obra con id: ${id}` })
         }
