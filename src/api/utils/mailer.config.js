@@ -1,7 +1,6 @@
 // Importa la biblioteca nodemailer
 const nodemailer = require("nodemailer");
 const dotenv = require("dotenv").config();
-// require('dotenv').config();
 
 
 // Obtiene la contraseña y la dirección de correo electrónico del entorno que estará en el .env
