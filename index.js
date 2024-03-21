@@ -3,7 +3,7 @@ const app = express();
 const playRoutes = require('./src/api/routes/play.routes.js')
 const companyRoutes = require('./src/api/routes/company.routes.js')
 const cors = require("cors");
-const dotenv = require("dotenv").config();
+require("dotenv").config();
 
 const cloudinary = require('cloudinary').v2;
 cloudinary.config({
