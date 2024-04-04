@@ -2,7 +2,7 @@ const Play = require('../models/play.models')
 
 const getAllPlays = async (req, res) =>{
     try {
-        const plays = await Play.find()
+        const plays = await Play.find().populate("company")
         console.log(plays);
         if(plays) {
             return res.status(200).json(plays);
@@ -72,6 +72,8 @@ const putPlay = async (req, res) => {
   const postPlay = async (req, res) => {
     try {
        const newPlay = new Play(req.body);
+
+       console.log('req.file.path > ', req.file.path);
 
        if (req.file.path) {
         newPlay.cartel = req.file.path;
