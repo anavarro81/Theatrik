@@ -3,7 +3,7 @@
 
 * _id
 * cartel
-* company
+* company_name
 * title
 * genre
 * date
@@ -14,6 +14,7 @@
 * director
 * setDesing
 * costume
+* company - Populate: "Companies". 
 
 ## Company 
 
@@ -23,7 +24,7 @@
 * email
 * phone
 * web
-* plays [] ids_plays
 
 
-    
+   
+        
