@@ -59,7 +59,7 @@ const deleteCompany = async (req, res) => {
 
 const getAllCompanies = async (req, res) => {
     try {
-        const company = await Company.find().populate("plays")
+        const company = await Company.find()
         console.log(company);
         if (company) {
             return res.status(200).json(company);

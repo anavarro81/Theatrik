@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const PlaySchema = new Schema(
     {
         cartel: String,
-        company: String,
+        company_name: String,
         title: String,
         genre: String,
         date: Date,
@@ -14,7 +14,8 @@ const PlaySchema = new Schema(
         actors: String,
         director: String,
         setDesing: String,
-        costume: String
+        costume: String,
+        company: [{ type: Schema.Types.ObjectId, ref: 'companies' }]
     },
     { collection: 'plays' }
 

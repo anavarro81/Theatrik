@@ -44,23 +44,30 @@ mongoose.connect(DB_URL)
         // Mapeamos las obras existentes para crear nuevos objetos Play con cada una
         const playsMap = Plays.map((play) => new Play(play));
 
-        
+        const compeniesMap = Companies.map((companie) => new Company(companie));
 
         for (const play of playsMap) {
-            
-            const companyFoundes = Companies.find(company => company.name === play.company);
 
+            
+            console.log('play.company > ', play.company_name);
+            
+            const companyFoundes = compeniesMap.find(company => company.name === play.company_name);
+
+            console.log('companyFoundes > ', companyFoundes);
 
             if (companyFoundes) {
-                companyFoundes.plays = []
-                companyFoundes.plays.push(play._id)
+                
+                play.company = []
+                play.company.push(companyFoundes._id)
             } else  {
-                console.log('No se ha encontrado la compañia: ', play.company);
+                console.log('No se ha encontrado la compañia: ', play.company_name);
             }
         }
 
 
-        const compeniesMap = Companies.map((companie) => new Company(companie));
+        
+
+        console.log('compeniesMap > ', compeniesMap );
 
 
         const result = await Company.insertMany(compeniesMap);

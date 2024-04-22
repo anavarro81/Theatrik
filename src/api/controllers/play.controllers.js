@@ -2,7 +2,7 @@ const Play = require('../models/play.models')
 
 const getAllPlays = async (req, res) => {
     try {
-        const plays = await Play.find()
+        const plays = await Play.find().populate("company")
         console.log(plays);
         if (plays) {
             return res.status(200).json(plays);
@@ -18,7 +18,7 @@ const getAllPlays = async (req, res) => {
 const getPlaybyID = async (req, res) => {
     try {
         const { id } = req.params;
-        const selectedPlay = await Play.findById(id)
+        const selectedPlay = await Play.findById(id).populate("company")
         if (!selectedPlay) {
             return res.status(404).json({ message: `No encontrada la obra con id: ${id}` })
         }
@@ -72,6 +72,8 @@ const putPlay = async (req, res) => {
 const postPlay = async (req, res) => {
     try {
        const newPlay = new Play(req.body);
+
+       console.log('req.file.path > ', req.file.path);
 
        if (req.file.path) {
         newPlay.cartel = req.file.path;
