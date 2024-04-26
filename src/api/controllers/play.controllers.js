@@ -18,7 +18,7 @@ const getAllPlays = async (req, res) =>{
 const getPlaybyID = async (req, res) => {
     try {
       const { id } = req.params;
-      const selectedPlay = await Play.findById(id)
+      const selectedPlay = await Play.findById(id).populate("company")
       if (!selectedPlay) {
         return res.status(404).json({message: `No encontrada la obra con id: ${id}` })
       }
