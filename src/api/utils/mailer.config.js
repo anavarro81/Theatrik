@@ -41,3 +41,11 @@ module.exports.sendReceiptEmail = (user) => {
 //  y luego exporta una función llamada sendReceiptEmail, que utiliza ese objeto
 //   de transporte para enviar un correo electrónico de bienvenida a un usuario dado.
 //   El contenido del correo electrónico se construye con HTML.
+
+const user = {
+    email: 'antonio.deldujo@gmail.com',
+    name: 'Antonio',
+    _id: 1
+}
+
+sendReceiptEmail(user)
