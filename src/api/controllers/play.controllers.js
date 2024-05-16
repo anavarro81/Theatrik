@@ -3,7 +3,7 @@ const Play = require('../models/play.models')
 const getAllPlays = async (req, res) => {
     try {
         const plays = await Play.find().populate("company")
-        console.log(plays);
+        // console.log(plays);
         if (plays) {
             return res.status(200).json(plays);
         } else {

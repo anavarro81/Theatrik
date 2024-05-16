@@ -42,10 +42,3 @@ module.exports.sendReceiptEmail = (user) => {
 //   de transporte para enviar un correo electrónico de bienvenida a un usuario dado.
 //   El contenido del correo electrónico se construye con HTML.
 
-const user = {
-    email: 'antonio.deldujo@gmail.com',
-    name: 'Antonio',
-    _id: 1
-}
-
-sendReceiptEmail(user)

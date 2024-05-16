@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const playRoutes = require ('./src/api/routes/play.routes.js')
 const companyRoutes = require('./src/api/routes/company.routes.js')
+const mailRoutes = require('./src/api/routes/mail.routes.js')
 const cors = require("cors");
 const dotenv = require("dotenv").config();
 
@@ -28,6 +29,7 @@ app.use(express.json());
 
 app.use("/play", playRoutes);// ruta inicial
 app.use("/companies", companyRoutes);// ruta inicial
+app.use("/mail", mailRoutes)
 
 
 app.get("/", (req, res) => {
