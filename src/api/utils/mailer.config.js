@@ -1,5 +1,6 @@
 // Importa la biblioteca nodemailer
 const nodemailer = require("nodemailer");
+const dotenv = require("dotenv").config();
 
 // Obtiene la contraseña y la dirección de correo electrónico del entorno que estará en el .env
 const EMAIL_PASSWORD = process.env.EMAIL_PASSWORD;
@@ -17,11 +18,17 @@ const transporter = nodemailer.createTransport({
 
 // Exporta una función para enviar correos electrónicos de recibos
 module.exports.sendReceiptEmail = (user) => {
+
+    console.log('>> EMAIL_MAIL : ', EMAIL_MAIL)
+    console.log('>> EMAIL_PASSWORD >> : ', EMAIL_PASSWORD)
+
     transporter // Utiliza el objeto de transporte para enviar el correo electrónico
         .sendMail({
             from: "iron.learning.welcomer@gmail.com", // Dirección de correo electrónico del remitente
-            to: user.email, // Dirección de correo electrónico del destinatario (usuario)
-            subject: `Bienvenido a AGO ${user.name}!`, // Asunto del correo electrónico
+            //to: user.email, // Dirección de correo electrónico del destinatario (usuario)
+            to: 'antonio.deldujo@gmail.com',
+            //subject: `Bienvenido a AGO ${user.name}!`, // Asunto del correo electrónico
+            subject: 'Correo de prueba', // Asunto del correo electrónico
             html: `
         <h3>Bienvenido a AGO, tu plataforma para encontrar todo lo que necesitas para tener una vida cómoda</h3>
         <p>Confirma tu mail pulsando el siguiente enlace </p>
