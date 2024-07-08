@@ -17,7 +17,11 @@ const transporter = nodemailer.createTransport({
 });
 
 // Exporta una función para enviar correos electrónicos de recibos
-module.exports.sendReceiptEmail = (user) => {
+module.exports.sendReceiptEmail = (data) => {
+
+    "Has solicitado x entradas para ir a ver xx el dia xx a las xx de la asociacion xx"
+
+    "La confirmación de la reserva la tiene que realizar las asociación. Ellos se pondran en contacto contigo en breve para ello."
 
     console.log('>> EMAIL_MAIL : ', EMAIL_MAIL)
     console.log('>> EMAIL_PASSWORD >> : ', EMAIL_PASSWORD)
@@ -26,14 +30,31 @@ module.exports.sendReceiptEmail = (user) => {
         .sendMail({
             from: "iron.learning.welcomer@gmail.com", // Dirección de correo electrónico del remitente
             //to: user.email, // Dirección de correo electrónico del destinatario (usuario)
-            to: 'antonio.deldujo@gmail.com',
+            to: data.email,
             //subject: `Bienvenido a AGO ${user.name}!`, // Asunto del correo electrónico
-            subject: 'Correo de prueba', // Asunto del correo electrónico
+            subject: `Confirmación de solicitud de entradas para ${data.tittle}`, // Asunto del correo electrónico
             html: `
-        <h3>Bienvenido a AGO, tu plataforma para encontrar todo lo que necesitas para tener una vida cómoda</h3>
-        <p>Confirma tu mail pulsando el siguiente enlace </p>
-        <a href="http://localhost:3000/user/${user._id}/confirm"> Confirmar</a>
-        <p> Por favor, pulsa aquí para acceder a la cuenta premium  <button> Premium</button> </p>
+
+        <p> Hola, ${data.fullName} </p>
+
+        <p>  Tu solicitud se ha realizado con éxito. </p>
+
+        <h2> Detalles de la solicitud </h2>
+
+        <ul>
+            <li> Numero de entradas: ${data.numTickets} </li>
+            <li> Fecha: ${data.date} </li>
+            <li> Teatro: ${data.place} </li>
+            <li> Asociación: ${data.company} </li>        
+        </ul>
+
+        <p> 
+        Tu solicitud todavia no está confirmada. 
+        La asociación que representa la obra se pondrá en contacto contigo lo antes posible para confirmar tu reserva. 
+        Puedes ponerte en contacto con ellos en el siguiente correo. <correo asociación> 
+        </p>              
+        
+        
             ` // Contenido HTML del correo electrónico
         })
         .then(() => { // Maneja el caso en que el correo electrónico se envíe correctamente
