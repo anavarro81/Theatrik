@@ -85,6 +85,13 @@ const getCompnanyByID = async (req, res) => {
     }
 };
 
+const element = async (req, res) => {
+   try {
+   } catch (error) {
+      return res.status(500).json(error)
+   }
+};
+
 
 module.exports = { newCompany, updateCompany, deleteCompany, getAllCompanies, getCompnanyByID }
 
